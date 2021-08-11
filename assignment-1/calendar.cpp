@@ -4,7 +4,6 @@ using namespace std;
 
 double leapDays[12] = {31,29,31,30,31.30,31,31,30,31,30,31};
 double nonLeapDays[12] = {31,28,31,30,31.30,31,31,30,31,30,31};
-
 char weeks[7][3] = {{'s','u','n'},
                     {'m','o','n'},
                     {'t','u','e'},
@@ -12,7 +11,6 @@ char weeks[7][3] = {{'s','u','n'},
                     {'t','h','u'},
                     {'f','r','i'},
                     {'s','a','t'}};
-
 void swap(int &a, int &b){
     a=a+b;
     b=a-b;
@@ -35,8 +33,7 @@ public:
     int dd, mm, yyyy;
 
     Date(int d, int m, int y){
-        dd= d;
-        mm= m;
+        dd= d; mm= m;
         yyyy= y;
     }
 
@@ -81,6 +78,9 @@ public:
             if(p==7){
                 p=0;
                 q++;
+            }
+            if(q==6){
+                q=1;
             }
         }
     }
