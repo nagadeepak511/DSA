@@ -2,7 +2,7 @@
 using namespace std;
 
 struct Stack{
-    int size, top, elements[50];
+    int size=50, top=-1, elements[50];
 
     void push(int element){
         if(top == size-1) cout << "Size exceeded\n";
@@ -31,7 +31,3 @@ struct Stack{
         else return elements[top];
     }
 };
-
-int main(){
-    struct Stack s;
-}
