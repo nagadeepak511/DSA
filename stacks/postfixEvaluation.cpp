@@ -1,11 +1,11 @@
 #include "stacks.cpp"
 
 int main(){
-    int n; cin >> n;
-    char s[n];
+    char s[50];
     cin >> s;
     Stack iStack;
-    for(int i=0; i<n; i++){
+    int i=0;
+    while(s[i] != '\0'){
         if(s[i]>='0' && s[i]<='9') iStack.push(s[i]-'0');
         else{
             int operand2 = iStack.pop();
@@ -14,6 +14,7 @@ int main(){
             else if(s[i]=='-') iStack.push(operand1 - operand2);
             else if(s[i]=='*') iStack.push(operand1 * operand2);
         }
+        i++;
     }
     cout << iStack.peek();
 }
