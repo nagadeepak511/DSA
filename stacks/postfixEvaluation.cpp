@@ -1,10 +1,11 @@
 #include "stacks.cpp"
 
 int main(){
-    char s[7];
+    int n; cin >> n;
+    char s[n];
     cin >> s;
     Stack iStack;
-    for(int i=0; i<7; i++){
+    for(int i=0; i<n; i++){
         if(s[i]>='0' && s[i]<='9') iStack.push(s[i]-'0');
         else{
             int operand2 = iStack.pop();
