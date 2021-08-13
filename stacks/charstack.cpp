@@ -13,21 +13,11 @@ struct CharStack{
     }
 
     char pop(){
-        if(top < 0){
-            cout << "Empty stack\n";
-            return 420;
-        }
-        else{
-            top--;
-            return elements[top+1];
-        }
+        top--;
+        return elements[top+1];
     }
 
     char peek(){
-        if(top < 0){
-            cout << "Empty stack";
-            return 420;
-        }
-        else return elements[top];
+        return elements[top];
     }
 };
