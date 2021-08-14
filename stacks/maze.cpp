@@ -1,8 +1,8 @@
 #include "stacks.cpp"
 
-void display(Stack a){
+void display(Stack a, int n){
     while(a.top > -1){
-        cout << a.peek()%8 << " " << a.peek()/8 << endl;
+        cout << a.peek()%n << " " << a.peek()/n << endl;
         a.pop();
     }
 }
@@ -13,6 +13,10 @@ void pathFinder(int a[50][50], int n, Stack &path, int start[2]){
     int prev;
     if(path.top > -1) prev = path.peek();
     path.push(top);
+
+    //display(path, n);
+    //cout << endl;
+    //cout << endl;
 
     if(x == start[0] && y == start[1]) return;
     else{
@@ -52,5 +56,5 @@ int main(){
     Stack path; path.push(end[0]+n*end[1]);
     pathFinder(a, n, path, start);
 
-    display(path);
+    display(path, n);
 }
