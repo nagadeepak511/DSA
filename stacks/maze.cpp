@@ -1,33 +1,40 @@
 #include "stacks.cpp"
 
-void display(int a[]){
-    for(int i=0; i<10; i++) cout << a[i] << " ";
-    cout << endl;
+void display(Stack a){
+    while(a.top > -1){
+        cout << a.peek()%8 << " " << a.peek()/8 << endl;
+        a.pop();
+    }
 }
 
-void pathFinder(int a[50][50], int n, Stack path, int start[2]){
+void pathFinder(int a[50][50], int n, Stack &path, int start[2]){ 
     int x = path.peek()%n, y=path.peek()/n;
+    int top = path.pop();
+    int prev;
+    if(path.top > -1) prev = path.peek();
+    path.push(top);
+
     if(x == start[0] && y == start[1]) return;
-    else if(!(a[x+1][y] || a[x-1][y] || a[x][y-1] || a[x][y+1])){
-        a[x][y] = 0;
-        path.pop();
-    }
     else{
-        a[x][y] = 0;
-        if(a[x+1][y]){
-            path.push(a[x+1][y]);
+        if(a[x+1][y] && (path.top == 0 || x+1+y*n != prev)){
+            path.push(x+1+y*n);
             pathFinder(a, n, path, start);
         }
-        else if(a[x-1][y]){
-            path.push(a[x-1][y]);
+        else if(a[x-1][y] && (path.top == 0 || x-1+y*n != prev)){
+            path.push(x-1+(y)*n);
             pathFinder(a, n, path, start);
         }
-        else if(a[x][y+1]){
-            path.push(a[x][y+1]);
+        else if(a[x][y+1] && (path.top == 0 || x+(y+1)*n != prev)){
+            path.push(x+(y+1)*n);
             pathFinder(a, n, path, start);
         }
-        else if(a[x][y-1]){
-            path.push(a[x][y-1]);
+        else if(a[x][y-1] && (path.top == 0 || x+(y-1)*n != prev)){
+            path.push(x+(y-1)*n);
+            pathFinder(a, n, path, start);
+        }
+        else {
+            path.pop();
+            a[x][y] = 0;
             pathFinder(a, n, path, start);
         }
     }
@@ -45,5 +52,5 @@ int main(){
     Stack path; path.push(end[0]+n*end[1]);
     pathFinder(a, n, path, start);
 
-    display(path.elements);
+    display(path);
 }
