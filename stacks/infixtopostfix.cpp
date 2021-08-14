@@ -1,7 +1,7 @@
 #include "charstack.cpp"
 
 int precedence(char c){
-    if(c=='*') return 1;
+    if(c=='*' || c=='/') return 1;
     else if(c=='+' || c=='-') return 0;
     else return -1;
 }
@@ -11,6 +11,11 @@ void convert(char infixExp[]){
     int i=0;
     while(infixExp[i] !='\0'){
         if(infixExp[i] >= '0' && infixExp[i] <= '9'){cout << infixExp[i];}
+        else if(infixExp[i] == '('){optrStack.push(infixExp[i]);}
+        else if(infixExp[i] == ')'){
+            while(optrStack.peek() != '(') cout << optrStack.pop();
+            optrStack.pop();
+        }
         else{
             while(optrStack.top > -1 && precedence(optrStack.peek()) >= precedence(infixExp[i])){
                 cout << optrStack.pop();
