@@ -3,7 +3,7 @@ using namespace std;
 
 class Node {
 public:
-    int integer=0; char character; bool boolean; double dFloat;
+    int integer=0; char character; bool boolean; double dFloat; bool isCharacter;
 };
 
 class GenericStack{
