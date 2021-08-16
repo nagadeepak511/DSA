@@ -11,6 +11,7 @@ char weeks[7][3] = {{'s','u','n'},
                     {'t','h','u'},
                     {'f','r','i'},
                     {'s','a','t'}};
+
 void swap(int &a, int &b){
     a=a+b;
     b=a-b;
@@ -27,7 +28,6 @@ int nLeaps(int y1, int y2){
     return (y2/4-y1/4)-(y2/100-y1/100)+(y2/400-y1/400);
 }
 
-// sunday monday tuesday wednesday thursday friday saturday
 class Date{
 public:
     int dd, mm, yyyy;
@@ -66,6 +66,7 @@ public:
             horizontal[0][i] = i+1;
             vertical[i][0] = i+1;
         }
+
         double* days;
         if((year%4==0 && year%100!=0) || year%400==0) days = leapDays;
         else days = nonLeapDays;
