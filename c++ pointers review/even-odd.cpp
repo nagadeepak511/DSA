@@ -7,10 +7,19 @@ void display(int*a, int n){
 }
 
 int main(){
-    int n; cin >> n;
-    int *a = new int[n];
-
-    for(int i=0; i<n; i++) cin>> a[i];
+    int n=0, a[100];
+    char c[100]; cin.get(c,100);
+    int i=0, val=0;
+    while(c[i] != '\0'){
+        while(c[i] >= '0' && c[i] <= '9'){ 
+            val = val*10 + (c[i]-'0');
+            if(c[++i] == ' ' || c[i] == '\0') {
+                a[n++] = val;
+                val=0;
+            }
+        }
+        i++;
+    }
 
     int *lptr=a, *rptr=a+(n-1);
 
@@ -25,5 +34,5 @@ int main(){
 
     display(a,n);
 
-    delete [] a;
+    
 }

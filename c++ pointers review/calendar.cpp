@@ -3,7 +3,7 @@
 using namespace std;
 
 double leapDays[12] = {31,29,31,30,31.30,31,31,30,31,30,31};
-double nonLeapDays[12] = {31,28,31,30,31.30,31,31,30,31,30,31};
+double nonLeapDays[12] = {31,28,31,30,31, 30,31,31,30,31,30,31};
 char weeks[7][3] = {{'s','u','n'},
                     {'m','o','n'},
                     {'t','u','e'},
@@ -62,6 +62,7 @@ public:
     int horizontal[6][7]={0}, vertical[7][6]={0};
 
     void fillCalendar(){
+        
         for(int i=0; i<7; i++){
             horizontal[0][i] = i+1;
             vertical[i][0] = i+1;
@@ -71,6 +72,7 @@ public:
         if((year%4==0 && year%100!=0) || year%400==0) days = leapDays;
         else days = nonLeapDays;
         int p = weekIndex, q=1;
+
         for(int i=1; i<=days[month-1]; i++){
             horizontal[q][p]=i;
             vertical[p][q]=i;
@@ -138,6 +140,8 @@ public:
 
 int main(){
     Calendar c(11,2003);
+    cout << "Enter month as number: "; cin >> c.month;
+    cout << "Enter year as number: "; cin >> c.year;
     c.FindDay();
     c.fillCalendar();
     c.display();
