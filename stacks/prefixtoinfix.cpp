@@ -62,16 +62,6 @@ void convert(char c[100], int i){
         }
         i--;
     }
-    // while(optrs.top > -1){
-    //     char optr=optrs.pop();
-    //     pourFromTo(opnds, optrs);
-    //     pourFromTo(opnds, optrs);
-    //     opnds.push(')');
-    //     pourFromTo(optrs, opnds);
-    //     opnds.push(optr);
-    //     pourFromTo(optrs, opnds);
-    //     opnds.push('(');
-    // }
     display(opnds);
 }
 
